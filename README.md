@@ -53,6 +53,8 @@ After the installation of the drivers, it is best to reboot the VM completely. A
 
 Now by entering:
 - `sudo airmon-ng`
-  - I can see as shown in the image below, the adapter has entered into `monitor mode`. This means that it is ready to passively monitor nearby wi-fi traffic.
+  - I can see the adapter has entered into `monitor mode`. This means that it is ready to passively monitor nearby wi-fi traffic.
  
 Further discussion of wireless monitoring and attack methods won’t be discussed in this project. However, we now have a fully functional device for using Kali Linux wireless auditing tools like the `aircrack suite` and `wifite`.
+
+>Note: This project is meant for ethical hacking purposes, education, and analysis. I do not condone using this device or knowledge for malicious purposes.
