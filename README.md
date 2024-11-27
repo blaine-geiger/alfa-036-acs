@@ -33,15 +33,16 @@ Prior to performing these commands, we can see that there is no support present 
   - In the output I see no mention of the USB connected device by name
 
 Open a new terminal window and use the following commands.
-1.	sudo apt update && sudo apt upgrade
-2.	sudo reboot
-3.	sudo apt install -y linux-headers-$(uname -r) build-essential bc dkms git libelf-dev rfkill iw
-4.	mkdir -p ~/src
-5.	cd ~/src
-6.	git clone https://github.com/morrownr/8821au-20210708.git
-7.	cd ~/src/8821au-20210708
-8.	sudo ./install-driver.sh
-
+```
+sudo apt update && sudo apt upgrade  
+sudo reboot  
+sudo apt install -y linux-headers-$(uname -r) build-essential bc dkms git libelf-dev rfkill iw  
+mkdir -p ~/src  
+cd ~/src  
+git clone https://github.com/morrownr/8821au-20210708.git  
+cd ~/src/8821au-20210708  
+sudo ./install-driver.sh
+```
 After the installation of the drivers, it is best to reboot the VM completely. After this I can test for recognition of the device by entering:
 
 - `lsusb`
