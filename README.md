@@ -16,16 +16,14 @@ Choosing ‘the right adapter’ is based on many factors and each has a mix of 
 - Security protocols supported (WPA, WPA2, WPA3)
 - Monitor mode and packet injection capable (this is essential for the tasks we are discussing)
 
-See this resource for more information, especially which devices work natively in Kali Linux without the need for additional drivers.
+See this [resource](https://github.com/morrownr/USB-WiFi?tab=readme-ov-file) for more information, especially which devices work natively in Kali Linux without the need for additional drivers.
 
 ## ALFA AWUS 036ACS
- 
-         Figure 31: ALFA AWUS 036ACS wi-fi adapter.
 
 This adapter has a compact form factor and is not very noticeable. It is not supported natively in Kali Linux and will require the installation of community supported drivers to give it full functionality. There are two main sources for drivers. ALFA does not provide very good driver support for many of its devices related to my specific purpose. GitHub has two main repositories for ALFA device drivers.
 
-- The `aircrack-ng` project page.
-- GitHub user `morrownr` is known as a valuable community source for drivers of these devices.
+- The [aircrack-ng](https://aircrack-ng.org/) project page.
+- GitHub user [morrownr](https://github.com/morrownr) is known as a valuable community source for drivers of these devices.
 
 ## Installing drivers
 The following worked to install drivers for this device inside of a Kali virtual machine. It involves updating and upgrading our Kali installation, rebooting, installing headers for the current version, and installing dependent packages. Making a directory, cloning a repository, and running the install script to install the drivers.
@@ -33,8 +31,6 @@ The following worked to install drivers for this device inside of a Kali virtual
 Prior to performing these commands, we can see that there is no support present by connecting the USB device and typing:
 - `lsusb`and pressing Enter
   - In the output I see no mention of the USB connected device by name
- 
-Figure 32: 'lsusb' output, which does not show the device due to lack of drivers.
 
 Open a new terminal window and use the following commands.
 1.	sudo apt update && sudo apt upgrade
@@ -46,7 +42,6 @@ Open a new terminal window and use the following commands.
 7.	cd ~/src/8821au-20210708
 8.	sudo ./install-driver.sh
 
-
 After the installation of the drivers, it is best to reboot the VM completely. After this I can test for recognition of the device by entering:
 
 - `lsusb`
@@ -54,13 +49,9 @@ After the installation of the drivers, it is best to reboot the VM completely. A
 - `iwconfig`
   - This shows that the device is in managed mode. Which is not suitable for my intended purpose. We can address this in the next commands.
     For now, we notice that the interface is named `wlan0`.
-  
-Figure 33: Figure 32: 'lsusb' output, now shows the device after driver installation. It also shows ‘iwconfig’ output and ‘managed mode’ on the interface.
 
 Now by entering:
 - `sudo airmon-ng`
   - I can see as shown in the image below, the adapter has entered into `monitor mode`. This means that it is ready to passively monitor nearby wi-fi traffic.
  
-   Figure 34: Successfully placing the wireless interface into 'monitor mode'.
-
 Further discussion of wireless monitoring and attack methods won’t be discussed in this project. However, we now have a fully functional device for using Kali Linux wireless auditing tools like the `aircrack suite` and `wifite`.
